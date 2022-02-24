@@ -1,0 +1,22 @@
+ul {
+  list-style-type: none;
+}
+ul li {
+  font-size: 14px;
+  width: 35%;
+  float: left;
+  border-bottom: 1px solid rgb(190, 190, 190);
+  color: #555;
+}
+
+ul li a {
+  font-weight: bold;
+  color: black;
+  background-color: #c9dff0;
+  display: inline-block;
+  width: 115px;
+  text-align: center;
+  margin-right: 10px;
+  height: 35px;
+  padding-top: 15px;
+}

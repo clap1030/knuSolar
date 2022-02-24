@@ -1,0 +1,58 @@
+<div >
+    
+    <div style="display: inline-block;width: 600px;">
+        <app-map (selectedSpotNotice)="changeSpot()"></app-map> 
+    </div>
+    <div style="display: inline-block;position:absolute">
+        <div style="padding: 12px 0px;padding-left: 40px;">
+            <span>발전소: 강원도 삼척시</span>
+        </div>
+        <div style="display: inline-block;padding-left: 40px;">
+            <mat-form-field appearance="fill">
+                <mat-label>관측지점</mat-label>
+                <mat-select [(ngModel)] = "selectedSpot" >
+                <mat-option *ngFor="let item of spots" [value]="item">
+                    {{item.region}} {{item.spot}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div style="display: inline-block;">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" >
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        
+        </div>
+        <div style="display: inline-block;">
+            <mat-form-field appearance="fill">
+                <mat-label>시간선택</mat-label>
+                <mat-select [(ngModel)] = "selectedTime" >
+                <mat-option *ngFor="let item of times; let i=index" [value]="i">
+                    {{item}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!--<select id="selectTime"  [(ngModel)]="selectedTime">
+                <ng-container *ngFor="let item of times; let i=index">
+                    <option [ngValue]="i" >{{item}}</option>
+                </ng-container>
+            </select> -->
+        </div>
+        <div style="display: inline-block;margin-left: 10px;">
+            <button mat-flat-button color="primary" (click)="getAsosData();">확인</button>
+        </div>
+        <div>
+            <app-asos-info  [spot]="resSpots[0]" [selectedTime]="selectedTime"></app-asos-info>
+        </div>
+    </div>
+    <!-- <app-asos-sel [result]="resSpots" [selectedTime]="selectedTime"></app-asos-sel>-->
+    
+    <app-asos-grid [spot]="resSpots[0]"></app-asos-grid>
+    
+</div>
+

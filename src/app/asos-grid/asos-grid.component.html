@@ -1,0 +1,221 @@
+<ng-container *ngIf="spot && spot.gridData">
+<div>{{spot.gridData[0].t10}}</div>
+<p>---------------------------------------------------------</p>
+<ag-grid-angular
+    style="width: 800px; height: 500px;"
+    class="ag-theme-alpine"
+    [rowData]="spot.gridData"
+    [columnDefs]="columnDefs"
+>
+</ag-grid-angular>
+</ng-container>
+
+<ng-container *ngIf="spot && spot.items">
+<div id="wrapper">
+    <table cellspacing="0" cellpadding="0">
+
+
+    <thead>
+        <tr>
+    <th><span>항목</span></th>
+    <th><span>00시</span></th>
+    <th><span>01시</span></th>
+    <th><span>02시</span></th>
+    <th><span>03시</span></th>
+    <th><span>04시</span></th>
+    <th><span>05시</span></th>
+    <th><span>06시</span></th>
+    <th><span>07시</span></th>
+    <th><span>08시</span></th>
+    <th><span>09시</span></th>
+    <th><span>10시</span></th>
+    <th><span>11시</span></th>
+    <th><span>12시</span></th>
+    <th><span>13시</span></th>
+    <th><span>14시</span></th>
+    <th><span>15시</span></th>
+    <th><span>16시</span></th>
+    <th><span>17시</span></th>
+    <th><span>18시</span></th>
+    <th><span>19시</span></th>
+    <th><span>20시</span></th>
+    <th><span>21시</span></th>
+    <th><span>22시</span></th>
+    <th><span>23시</span></th>
+</tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>일조(hr)</td>
+      <td  *ngFor="let item of spot.items">{{item.ss}}</td>
+    </tr>
+    <tr>
+        <td>일사(MJ/m2)</td>
+       <td  *ngFor="let item of spot.items">{{item.icsr}}</td>
+    </tr>
+    <tr>
+        <td>기온(°C)</td>
+        <td colspan="24">
+          <highcharts-chart
+            [Highcharts] = "highcharts" 
+            [options] = "chartOptions" 
+            style = "width: 100%; height: 250px; display: block;"
+            (chartInstance)="setDegree()"
+            >
+          </highcharts-chart>
+          <!--<ng-container [(ngModel)]="degree">
+            <highcharts-chart
+              id="container" 
+              [Highcharts]="Highcharts"
+              [constructorType]="chartConstructor"
+              [options]="chartOptions"
+              style="width: 100%; height: 50px; display: block;">
+          </highcharts-chart> 
+          </ng-container> -->
+        </td>
+        <!-- <td  *ngFor="let item of spot.items">{{item.ta}}</td> -->
+    </tr>
+    <tr>
+        <td>강수량(mm)</td>
+        <td  *ngFor="let item of spot.items">{{item.rn}}</td>
+    </tr>
+    <tr>
+        <td>풍속(m/s)</td>
+        <td  *ngFor="let item of spot.items">{{item.ws}}</td>
+    </tr>
+    <tr>
+        <td>풍향(16방위)</td>
+        <td  *ngFor="let item of spot.items">{{item.wd}}</td>
+    </tr>
+    <tr>
+        <td>습도(%)</td>
+        <td  *ngFor="let item of spot.items">{{item.hm}}</td>
+    </tr>
+    <tr>
+        <td>현지기압(hPa)</td>
+        <td  *ngFor="let item of spot.items">{{item.pa}}</td>
+    </tr>
+    <tr>
+        <td>적설(cm)</td>
+        <td  *ngFor="let item of spot.items">{{item.dsnw}}</td>
+    </tr>
+    <tr>
+        <td>전운량(10분위)</td>
+        <td  *ngFor="let item of spot.items">{{item.dc10Tca}}</td>
+    </tr>
+    </tbody>
+</table>
+  </div>
+</ng-container>
+<!--
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="text">
+      <th mat-header-cell *matHeaderCellDef>항목</th>
+      <td mat-cell *matCellDef="let element"> {{element.text}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="t00">
+      <th mat-header-cell *matHeaderCellDef>00시</th>
+      <td mat-cell *matCellDef="let element"> {{element.t00}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="t01">
+      <th mat-header-cell *matHeaderCellDef>03시</th>
+      <td mat-cell *matCellDef="let element"> {{element.t01}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="t02">
+      <th mat-header-cell *matHeaderCellDef>02시</th>
+      <td mat-cell *matCellDef="let element"> {{element.t02}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="t03">
+        <th mat-header-cell *matHeaderCellDef>03시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t03}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t04">
+        <th mat-header-cell *matHeaderCellDef>04시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t04}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t05">
+        <th mat-header-cell *matHeaderCellDef>05시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t05}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t06">
+        <th mat-header-cell *matHeaderCellDef>06시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t06}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t07">
+        <th mat-header-cell *matHeaderCellDef>07시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t07}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t08">
+        <th mat-header-cell *matHeaderCellDef>08시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t08}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t09">
+        <th mat-header-cell *matHeaderCellDef>09시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t09}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t10">
+        <th mat-header-cell *matHeaderCellDef>10시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t10}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t11">
+        <th mat-header-cell *matHeaderCellDef>11시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t11}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t12">
+        <th mat-header-cell *matHeaderCellDef>12시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t12}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t13">
+        <th mat-header-cell *matHeaderCellDef>13시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t13}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t14">
+        <th mat-header-cell *matHeaderCellDef>14시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t14}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t15">
+        <th mat-header-cell *matHeaderCellDef>15시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t15}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t16">
+        <th mat-header-cell *matHeaderCellDef>16시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t16}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t17">
+        <th mat-header-cell *matHeaderCellDef>17시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t17}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t18">
+        <th mat-header-cell *matHeaderCellDef>18시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t18}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t19">
+        <th mat-header-cell *matHeaderCellDef>19시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t19}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t20">
+        <th mat-header-cell *matHeaderCellDef>20시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t20}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t21">
+        <th mat-header-cell *matHeaderCellDef>21시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t21}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t22">
+        <th mat-header-cell *matHeaderCellDef>22시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t22}} </td>
+      </ng-container>
+      <ng-container matColumnDef="t23">
+        <th mat-header-cell *matHeaderCellDef>23시</th>
+        <td mat-cell *matCellDef="let element"> {{element.t23}} </td>
+      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+-->

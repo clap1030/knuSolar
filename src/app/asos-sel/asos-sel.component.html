@@ -1,0 +1,12 @@
+<div *ngIf="result">
+    <!--<span>관측지점:
+        <select id="selectRegion"  [(ngModel)]="selectedData">
+            <option *ngFor="let item of result; let i=index" [ngValue]="item" >{{item.spot}}</option>
+        </select>
+    </span>-->
+    
+   <app-asos-info  [spot]="selectedData" [selectedTime]="selectedTime"></app-asos-info>
+   <app-asos-grid [spot]="selectedData"></app-asos-grid>
+</div>
+<p>선택된데이터: </p>{{selectedData | json}}
+

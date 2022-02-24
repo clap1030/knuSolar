@@ -1,0 +1,21 @@
+        <select (change)="selectType($event)">
+                <option value="ta">기온(C)</option>
+                <option value="rn">강수량(mm)</option>
+                <option value="ws">풍속(m/s)</option>
+                <option value="wd">풍향(16방위)</option>
+                <option value="hm">습도(%)</option>
+                <option value="pa">현지기압(hPa)</option>
+                <option value="ss">일조(hr)</option>
+                <option value="icsr">일사(MJ/m2)</option>
+                <option value="dsnw">적설(cm)</option>
+                <option value="dc10Tca">전운량(10분위)</option>
+        </select>
+	<highcharts-chart
+                id="container" 
+                [Highcharts]="Highcharts"
+                [constructorType]="chartConstructor"
+                [options]="chartOptions"
+                [(update)]="updateFlag"
+                style="width: 500px; height: 500px; display: block;">
+        </highcharts-chart>
+        

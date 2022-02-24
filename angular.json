@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "d641dc23-7ae8-4288-b4b9-5baa7cb4d4f6"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -66,6 +69,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+              "browserTarget": "your-application-name:build",
+              "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "solarPrj:build:production"

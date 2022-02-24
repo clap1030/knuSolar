@@ -1,0 +1,52 @@
+<div *ngIf="spot">
+    <ul>
+        <li><a>위도</a>{{spot.lat}}</li>
+        <li><a>경도</a>{{spot.lon}}</li>
+        <ng-container *ngFor="let item of spot.items; let i=index">
+            <ng-container *ngIf="selectedTime == i">
+                <li><a>일조(hr) </a>{{item.ss}}</li>
+                <li><a>일사(MJ/m2) </a>{{item.icsr}}</li>
+                <li><a>기온(°C)</a>{{item.ta}}</li>
+                <li><a>강수량(mm)</a>{{item.rn}}</li>
+                <li><a>풍속(m/s)</a>{{item.ws}}</li>
+                <li><a>풍향(16방위)</a>{{item.wd}}</li>
+                <li><a>습도(%)</a>{{item.hm}}</li>
+                <li><a>현지기압(hPa)</a>{{item.pa}}</li>
+                <li><a>적설(cm)</a>{{item.dsnw}}</li>
+                <li><a>전운량(10분위)</a>{{item.dc10Tca}}</li>
+            </ng-container>
+        </ng-container>
+        
+    </ul>
+    <!--
+    <ng-container *ngFor="let item of spot.items; let i=index">
+        <ng-container *ngIf="selectedTime == i">
+            <mat-selection-list [multiple]="false">
+                <mat-list-option [value]="item"><mat-icon mat-list-icon>arrow right</mat-icon><div>일조(hr): {{item.ss}}</div></mat-list-option>
+                <mat-list-option [value]="item">일사(MJ/m2):  {{item.icsr}}</mat-list-option>
+                <mat-list-option [value]="item">기온(°C): {{item.ta}}</mat-list-option>
+                <mat-list-option [value]="item">강수량(mm): {{item.rn}}</mat-list-option>
+                <mat-list-option [value]="item">풍속(m/s): {{item.ws}}</mat-list-option>
+                <mat-list-option [value]="item">풍향(16방위): {{item.wd}}</mat-list-option>
+                <mat-list-option [value]="item">습도(%): {{item.hm}}</mat-list-option>
+                <mat-list-option [value]="item">현지기압(hPa): {{item.pa}}</mat-list-option>
+                <mat-list-option [value]="item">적설(cm):{{item.dsnw}}</mat-list-option>
+                <mat-list-option [value]="item">전운량(10분위): {{item.dc10Tca}}</mat-list-option>
+            </mat-selection-list>
+        </ng-container>
+    </ng-container>
+    -->
+</div>
+
+<!--
+기온(°C): 10
+강수량(mm): 5
+풍속(m/s): 10
+풍향(16방위): 3
+습도(%): 20
+현지기압(hPa): 1000
+적설(cm): 2.2
+전운량(10분위): 3
+
+
+-->

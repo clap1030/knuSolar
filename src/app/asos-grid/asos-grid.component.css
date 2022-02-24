@@ -1,0 +1,48 @@
+#wrapper {
+  display: block;
+  width: 850px;
+  background: #fff;
+  margin: 0 auto;
+  padding: 10px 17px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0 auto;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+table thead {
+  cursor: pointer;
+  background: #c9dff0;
+}
+table thead tr th {
+  font-weight: bold;
+  padding: 12px 5px;
+}
+table thead tr th span {
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  display: block;
+  width: 30px;
+  text-align: center;
+}
+
+table thead tr th.headerSortUp,
+table thead tr th.headerSortDown {
+  background: #acc8dd;
+}
+
+table tbody tr {
+  color: #555;
+}
+table tbody tr td {
+  text-align: center;
+  padding: 15px 10px;
+}
+table tbody tr td.lalign {
+  text-align: left;
+}
